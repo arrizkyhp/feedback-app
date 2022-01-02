@@ -1,11 +1,27 @@
-import FeedbackItem from "./components/FeedbackItem";
+import { useState } from "react";
+import FeedbackList from "./components/FeedbackList";
+import FeedbackStats from "./components/FeedbackStats";
 import Header from "./components/Header";
+import FeedbackData from './data/FeedbackData';
 
 export default function App() {
+    const [feedback, setFeedback] = useState(FeedbackData);
+
+    const deleteFeedback = (id) => {
+        if (window.confirm('Are you sure want to delete?')) {
+            setFeedback(feedback.filter((item) => item.id !== id))
+        }
+    }
     return (
         <>
             <Header/>
-            <FeedbackItem />
+            <div className="container">
+                <FeedbackStats feedback={feedback} />
+                <FeedbackList
+                    feedback={feedback}
+                    handleDelete={deleteFeedback}
+                />
+            </div>
         </>
     )
 }
