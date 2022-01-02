@@ -34,6 +34,7 @@ function FeedbackForm({ handleAdd }) {
 
             handleAdd(newFeedback)
             setText('')
+            setBtnDisabled(true)
         }
     }
 
