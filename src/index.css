@@ -11,6 +11,7 @@ body {
   background-color: #202142;
   color: #fff;
   line-height: 1.6;
+  /* position: relative; */
 }
 
 ul {
@@ -21,6 +22,15 @@ ul {
   max-width: 768px;
   margin: auto;
   padding: 0 20px;
+}
+
+.container a {
+  color: #ff6a95;
+  text-decoration: none;
+}
+
+.container a:hover {
+  color: #fff;
 }
 
 header {
@@ -187,8 +197,8 @@ input:focus {
 
 .about-link {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
   color: #fff;
   cursor: pointer;
 }
