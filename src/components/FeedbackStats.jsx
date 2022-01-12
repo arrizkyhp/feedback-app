@@ -6,7 +6,7 @@ function FeedbackStats() {
 
     // Calc rating avg
     let average = feedback.reduce((acc, cur) => {
-        return acc + cur.rating
+        return acc + parseFloat(cur.rating)
     }, 0) / feedback.length;
 
     // to avoid 6.845645646

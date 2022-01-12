@@ -4,30 +4,29 @@ import {motion, AnimatePresence} from 'framer-motion'
 import FeedbackContext from '../context/FeedbackContext'
 
 function FeedbackList() {
-    const {feedback} = useContext(FeedbackContext);
+    const {feedback, isLoading} = useContext(FeedbackContext);
 
-    if (!feedback || feedback.length === 0) { return <p>No Feedback yet..</p>};
+    if (!isLoading && (!feedback || feedback.length === 0)) { return <p>No Feedback yet..</p>};
 
-    return (
+    return isLoading ? <h3>Loading...</h3> : (
+      <div className="feedback-list">
+      <AnimatePresence>
+        {feedback.map((item) => (
+          <motion.div
+            key={item.id}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+          >
+          <FeedbackItem
+            item={item}
+          />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+  </div>
+    )
 
-        <div className="feedback-list">
-            <AnimatePresence>
-          {feedback.map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}
-              >
-              <FeedbackItem
-                item={item}
-            />
-            </motion.div>
-          ))}
-          </AnimatePresence>
-        </div>
-
-    );
 
     // return (
     //   <div>
